@@ -29,6 +29,8 @@ Total lab time: **4–5 hours**.
 
 ## Quickstart
 
+### Linux/macOS or a shell with GNU Make
+
 ```bash
 # Option A: conda
 conda activate ai-lab
@@ -51,6 +53,33 @@ make run-chaos
 # Generate report from metrics
 make report
 ```
+
+### Windows PowerShell (no `make` required)
+
+```powershell
+py -3.13 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -e ".[dev]"
+
+# Start Redis and verify its container state
+docker compose up -d
+docker compose ps
+
+# Run tests and the canonical memory-cache simulation
+python -m pytest -q
+python scripts/run_chaos.py --out reports/metrics.json
+
+# Reproducible cache A/B evidence and Redis-backed run
+python scripts/run_chaos.py --disable-cache --out reports/metrics_no_cache.json
+python scripts/run_chaos.py --cache-backend redis --flush-cache --out reports/metrics_redis.json
+python scripts/verify_redis.py
+
+# Generate the complete nine-section report
+python scripts/generate_report.py
+```
+
+`run_chaos.py` writes a CSV next to each JSON output. The `--flush-cache` option deletes
+only keys under the lab's `rl:cache:` prefix; it does not flush unrelated Redis data.
 
 ## What you need to implement
 

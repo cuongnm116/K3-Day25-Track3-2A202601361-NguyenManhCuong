@@ -30,6 +30,7 @@ class CacheConfig(BaseModel):
 
 class LoadTestConfig(BaseModel):
     requests: int = Field(gt=0)
+    seed: int = 25
 
 
 class ScenarioConfig(BaseModel):

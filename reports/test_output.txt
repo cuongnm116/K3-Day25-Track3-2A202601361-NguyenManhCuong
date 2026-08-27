@@ -1,0 +1,4 @@
+﻿NAME                                                  IMAGE            COMMAND                  SERVICE   CREATED          STATUS                    PORTS
+k3-day25-track3-2a202601361-nguyenmanhcuong-redis-1   redis:7-alpine   "docker-entrypoint.sΓÇª"   redis     52 minutes ago   Up 52 minutes (healthy)   0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp
+.......................................XXXXXXX                           [100%]
+39 passed, 7 xpassed in 4.91s

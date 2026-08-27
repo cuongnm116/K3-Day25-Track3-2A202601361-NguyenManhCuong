@@ -7,6 +7,7 @@ from __future__ import annotations
 import time
 
 import pytest
+from redis.exceptions import RedisError
 
 from reliability_lab.cache import SharedRedisCache
 
@@ -19,7 +20,7 @@ def _redis_available() -> bool:
         r.ping()
         r.close()
         return True
-    except Exception:
+    except RedisError:
         return False
 
 

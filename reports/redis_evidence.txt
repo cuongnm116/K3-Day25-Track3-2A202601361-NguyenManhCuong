@@ -1,0 +1,10 @@
+redis_ping=True
+shared_value='shared response'
+shared_score=1.00
+privacy_cached=False
+false_hit_cached=False
+false_hit_score=0.8824
+false_hit_log_entries=1
+evidence_key_ttl_seconds=60
+lab_cache_key_count=13
+sample_lab_cache_key=rl:cache:095946136fea
